@@ -52,3 +52,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update active link when the hash changes (e.g., when navigating through the page)
     window.addEventListener('hashchange', setActiveLink);
 });
+
+{/* <form id="search-form" enctype="multipart/form-data">
+    <input type="file" id="image-upload" name="image" accept="image/*">
+    <button type="submit">Search</button>
+</form>
+<div id="results"></div>
+<script>
+    document.getElementById('search-form').onsubmit = async function(e) {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('image', document.getElementById('image-upload').files[0]);
+
+        const response = await fetch('/search', {
+            method: 'POST',
+            body: formData
+        });
+        const results = await response.json();
+        document.getElementById('results').innerText = JSON.stringify(results, null, 2);
+    };
+</script> */}
+
