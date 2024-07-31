@@ -1,0 +1,316 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 2px solid black;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between the logo image and the text */
+}
+
+.logo-img {
+    width: 90px; /* Ensure the image is properly sized */
+    height: 90px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Space between each nav link */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.nav-links a.active {
+    color: green;
+}
+
+.cart-icon {
+    font-size: 20px;
+}
+
+.header-image {
+    text-align: center; /* Center-align the image container */
+    width: 100%; /* Ensure the container spans the full width */
+}
+
+.header-image img {
+    width: 95%; /* Adjust width to fit container */
+    height: auto;
+    display: block; /* Ensure the image behaves like a block element */
+    margin: 0 auto; /* Center the image */
+    margin-top: 10px;
+}
+
+.body-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start (left) */
+    padding: 20px;
+    gap: 20px; /* Adjust space between elements */
+}
+
+.tagline {
+    align-self: flex-start; /* Align the tagline to the left */
+    font-weight: normal; /* Remove bold styling */
+    font-size: 28px;
+    margin-top: -10px;
+}
+
+.image-gallery {
+    display: flex;
+    gap: 20px; /* Space between images */
+    margin-left: auto; /* Align the gallery to the right */
+    margin-top: -90px;
+}
+
+.gallery-img {
+    width: 200px; /* Set width for gallery images */
+    height: auto;
+}
+
+.shop-now {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px; /* Oval shape */
+    font-size: 16px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    margin-top: -90px; /* Reduce space above button */
+    width: 200px;
+}
+
+.shop-now:hover {
+    background-color: #666; /* Darker grey on hover */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+body.auction-page {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white; /* Set the top 70% background to white */
+    position: relative;
+    min-height: 100vh; /* Ensure the body takes full viewport height */
+}
+
+.bottom-green {
+    background-color: rgb(46, 121, 46); /* Grass green color */
+    height: 40vh; /* 30% of the viewport height */
+    width: 100%;
+    position: absolute;
+    bottom: 0; /* Position at the bottom */
+    left: 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f3efef;
+    border-bottom: 2px solid black;
+}
+body.about-page {
+    background-color: #f3f3e7; /* Replaced "cream and beige" with a valid color */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f3efef;
+    border-bottom: 2px solid black;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    width: 90px;
+    height: 90px;
+}
+
+.website-name {
+    font-size: 24px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    color: green;
+}
+
+.cart-icon {
+    font-size: 20px;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+}
+h2 {
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+}
+h3 {
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+}
+h4 {
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+}
+h5 {
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image img {
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.text {
+    flex: 1;
+    padding-left: 15px;
+}
+
+.text p {
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.5; /* Improved readability */
+}
+
+.tagline {
+    font-weight: normal; 
+    font-size: 28px;
+    margin-top: -10px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.search-bar {
+    flex: 1;
+    padding: 15px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+.search-button {
+    border: none;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.search-button:hover {
+    background-color: #45a049;
+}
+
+
+.contact-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #6f8d3e;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+.h2-contact {
+    text-align: center;
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.button-contact {
+    display: block;
+    width: 90%;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #4cae4c;
+}
