@@ -146,7 +146,7 @@ body {
 .gallery-img {
     height: 60vh;
     width: auto;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .gallery-price {
@@ -196,4 +196,14 @@ body {
 .shop-now:hover {
     background-color: #45a049;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.gallery-caption {
+    font-size: 1.2em;
+    color: #333;
+}
+.timer {
+    font-weight: bold;
+    color: red;
 }

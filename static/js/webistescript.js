@@ -66,3 +66,36 @@ document.getElementById('rightArrow').addEventListener('click', () => {
         behavior: 'smooth'
     });
 });
+
+
+function startAuctionTimer(duration, display) {
+    let timer = duration, hours, minutes, seconds;
+    setInterval(function () {
+        hours = parseInt(timer / 3600, 10);
+        minutes = parseInt((timer % 3600) / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = hours + ":" + minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    const duration = 5 * 60 * 60; // Timer duration in seconds (5 hours)
+    const timer1 = document.querySelector('#timer1');
+    const timer2 = document.querySelector('#timer2');
+    const timer3 = document.querySelector('#timer3');
+    const timer4 = document.querySelector('#timer4');
+
+    startAuctionTimer(duration, timer1);
+    startAuctionTimer(duration, timer2);
+    startAuctionTimer(duration, timer3);
+    startAuctionTimer(duration, timer4);
+};
