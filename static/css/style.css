@@ -3,45 +3,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #f8f8f8;
-    border-bottom: 2px solid black;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* Space between the logo image and the text */
-}
-
-.logo-img {
-    width: 90px; /* Ensure the image is properly sized */
-    height: 90px;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 25px; /* Space between each nav link */
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: black;
-    font-size: 18px;
-}
-
-.nav-links a.active {
-    color: green;
-}
-
-.cart-icon {
-    font-size: 20px;
-}
 
 .header-image {
     text-align: center; /* Center-align the image container */
@@ -110,23 +71,8 @@ body.auction-page {
     min-height: 100vh; /* Ensure the body takes full viewport height */
 }
 
-.bottom-green {
-    background-color: rgb(46, 121, 46); /* Grass green color */
-    height: 40vh; /* 30% of the viewport height */
-    width: 100%;
-    position: absolute;
-    bottom: 0; /* Position at the bottom */
-    left: 0;
-}
 
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #f3efef;
-    border-bottom: 2px solid black;
-}
+
 body.about-page {
     background-color: #f3f3e7; /* Replaced "cream and beige" with a valid color */
     font-family: Arial, sans-serif;
@@ -236,10 +182,10 @@ h1, h2, h3, h4, h5 {
     cursor: pointer;
     margin-left: 10px;
 }
+
 .search-button:hover {
     background-color: #45a049;
 }
-
 
 /* Contact Container */
 .contact-container {

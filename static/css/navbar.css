@@ -1,8 +1,3 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
 .navbar {
     display: flex;
     align-items: center;
@@ -13,25 +8,30 @@ body {
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between the logo image and the text */
+}
+
+.logo-img {
+    width: 90px; /* Ensure the image is properly sized */
+    height: 90px;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
+    gap: 25px; /* Space between each nav link */
 }
 
 .nav-links a {
     text-decoration: none;
     color: black;
-    margin: 0 15px;
     font-size: 18px;
 }
 
 .nav-links a.active {
     color: green;
-    font-size: 42px; /* Increase font size for active link */
 }
 
 .cart-icon {

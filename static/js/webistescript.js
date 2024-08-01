@@ -52,3 +52,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update active link when the hash changes (e.g., when navigating through the page)
     window.addEventListener('hashchange', setActiveLink);
 });
+
+document.getElementById('leftArrow').addEventListener('click', () => {
+    document.querySelector('.gallery-items-container').scrollBy({
+        left: -300,
+        behavior: 'smooth'
+    });
+});
+
+document.getElementById('rightArrow').addEventListener('click', () => {
+    document.querySelector('.gallery-items-container').scrollBy({
+        left: 300,
+        behavior: 'smooth'
+    });
+});
