@@ -519,3 +519,12 @@ textarea {
     background-color: rgb(100, 100, 100);
     color: rgb(255, 255, 255);
 }
+
+.body-auction-content {
+    display: flex;
+    align-items: center; /* Vertically align items to the center */
+    gap: 20px; /* Add some space between the items */
+}
+.body-auction-content img {
+    max-width: 100%; /* Ensure the image is responsive */
+}
