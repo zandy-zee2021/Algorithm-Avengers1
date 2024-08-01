@@ -1,75 +1,88 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav-links a');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const leftArrow = document.querySelector('.gallery-arrow.left');
-    const rightArrow = document.querySelector('.gallery-arrow.right');
-    let currentIndex = 0;
+class Chatbox {
+    constructor() {
+        this.args = {
+            openButton: document.querySelector('.chatbox__button'),
+            chatBox: document.querySelector('.chatbox__support'),
+            sendButton: document.querySelector('.send__button')
+        }
 
-    // Function to set the active gallery item based on the current index
-    const setActiveGalleryItem = () => {
-        galleryItems.forEach((item, index) => {
-            item.classList.toggle('active', index === currentIndex);
-        });
-    };
+        this.state = false;
+        this.messages = [];
+    }
 
-    // Event listeners for gallery arrows
-    leftArrow.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-        setActiveGalleryItem();
-    });
+    display() {
+        const { openButton, chatBox, sendButton } = this.args;
 
-    rightArrow.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % galleryItems.length;
-        setActiveGalleryItem();
-    });
+        openButton.addEventListener('click', () => this.toggleState(chatBox));
 
-    // Initial setup for gallery items
-    setActiveGalleryItem();
+        sendButton.addEventListener('click', () => this.onSendButton(chatBox));
 
-    // Function to set the active link based on the current hash
-    const setActiveLink = () => {
-        const currentHash = window.location.hash;
-        navLinks.forEach(link => {
-            if (link.getAttribute('href') === currentHash) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
+        const node = chatBox.querySelector('input');
+        node.addEventListener("keyup", ({ key }) => {
+            if (key === "Enter") {
+                this.onSendButton(chatBox);
             }
         });
-    };
+    }
 
-    // Add event listeners to each link to set the active class on click
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
+    toggleState(chatBox) {
+        this.state = !this.state;
+        // Show or hide the box
+        if (this.state) {
+            chatBox.classList.add('chatbox--active');
+        } else {
+            chatBox.classList.remove('chatbox--active');
+        }
+    }
 
-    // Set active link on page load based on the current URL hash
-    setActiveLink();
+    onSendButton(chatBox) {
+        var textField = chatBox.querySelector('input');
+        let text1 = textField.value;
+        if (text1 === "") {
+            return;
+        }
 
-    // Update active link when the hash changes (e.g., when navigating through the page)
-    window.addEventListener('hashchange', setActiveLink);
-});
+        let msg1 = { name: "User", message: text1 };
+        this.messages.push(msg1);
 
-{/* <form id="search-form" enctype="multipart/form-data">
-    <input type="file" id="image-upload" name="image" accept="image/*">
-    <button type="submit">Search</button>
-</form>
-<div id="results"></div>
-<script>
-    document.getElementById('search-form').onsubmit = async function(e) {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append('image', document.getElementById('image-upload').files[0]);
-
-        const response = await fetch('/search', {
+        fetch(SCRIPT_ROOT + '/predict', {
             method: 'POST',
-            body: formData
+            body: JSON.stringify({ message: text1 }),
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(r => r.json())
+        .then(r => {
+            let msg2 = { name: "Farmie", message: r.answer };
+            this.messages.push(msg2);
+            this.updateChatText(chatBox);
+            textField.value = '';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            this.updateChatText(chatBox);
+            textField.value = '';
         });
-        const results = await response.json();
-        document.getElementById('results').innerText = JSON.stringify(results, null, 2);
-    };
-</script> */}
+    }
 
+    updateChatText(chatBox) {
+        var html = '';
+        this.messages.slice().reverse().forEach(function(item) {
+            if (item.name === "Farmie") {
+                html += '<div class="messages__item messages__item--visitor">' + item.message + '</div>';
+            } else {
+                html += '<div class="messages__item messages__item--operator">' + item.message + '</div>';
+            }
+        });
+        const chatmessages = chatBox.querySelector('.chatbox__messages');
+        chatmessages.innerHTML = html;
+    }
+}
+
+// Initialize the Chatbox
+document.addEventListener('DOMContentLoaded', () => {
+    const chatBox = new Chatbox();
+    chatBox.display();
+});
