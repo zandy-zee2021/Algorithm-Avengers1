@@ -1,85 +1,34 @@
-# our flask goes in here
-from flask import Flask, render_template, request, jsonify
-from elasticsearch import Elasticsearch
-from PIL import Image
-import io
-import numpy as np
-import base64
-from twilio.rest import Client
-import feature_extractor  # Hypothetical module for feature extraction
+from flask import Flask, render_template, jsonify, request
+from chat import get_response
 
 app = Flask(__name__)
-es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
 
+@app.route('/')
+def home():
+    return render_template('Home.html')
 
-# Twilio credentials
-account_sid = 'YOUR_TWILIO_ACCOUNT_SID'
-auth_token = 'YOUR_TWILIO_AUTH_TOKEN'
-client = Client(account_sid, auth_token)
+@app.route('/about')
+def about():
+    return render_template('About.html')
 
-@app.route('/upload', methods=['POST'])
-def upload_image():
-    if 'image' not in request.files:
-        return jsonify({'error': 'No image file provided'}), 400
-    file = request.files['image']
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'}), 400
+@app.route('/auctions')
+def auctions():
+    return render_template('Auctions.html')
 
-    image = Image.open(file.stream)
-    features = feature_extractor.extract(image)  # Use the feature extractor function
+@app.route('/shop')
+def shop():
+    return render_template('Shop.html')
 
-    es.index(index='catalog', body={'features': features, 'metadata': {'filename': file.filename}})
+@app.route('/contact')
+def contact():
+    return render_template('Contact.html')
 
-    return jsonify({'message': 'Image indexed successfully'}), 200
-
-@app.route('/search', methods=['POST'])
-def search_image():
-    if 'image' not in request.files:
-        return jsonify({'error': 'No image file provided'}), 400
-    file = request.files['image']
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'}), 400
-
-    image = Image.open(file.stream)
-    query_features = feature_extractor.extract(image)  # Use the feature extractor function
-
-    response = es.search(
-        index='catalog',
-        body={
-            'query': {
-                'knn': {
-                    'field': 'features',
-                    'vector': query_features,
-                    'k': 10  # Number of similar results to return
-                }
-            }
-        }
-    )
-
-    return jsonify(response['hits']['hits']), 200
-
-
-@app.route('/whatsapp', methods=['POST'])
-def whatsapp():
-    incoming_msg = request.values.get('Body', '').lower()
-    from_number = request.values.get('From', '')
-
-    response_message = 'Hello! How can I help you?'
-
-    # Handle different messages
-    if 'hello' in incoming_msg:
-        response_message = 'Hi there!'
-    elif 'help' in incoming_msg:
-        response_message = 'Here is what I can do...'
-
-    # Send response
-    message = client.messages.create(
-        body=response_message,
-        from_='whatsapp:+14155238886',  # Your Twilio WhatsApp number
-        to=from_number
-    )
-
-    return jsonify({'status': 'success'})
+@app.route('/predict', methods=['POST'])
+def predict():
+    text = request.get_json().get("message")
+    response = get_response(text)
+    message = {"answer": response}
+    return jsonify(message)
 
 if __name__ == '__main__':
     app.run(debug=True)

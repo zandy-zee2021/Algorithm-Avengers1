@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Link to external CSS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/websitescript.js') }}"></script>
+
+    <title>Home Page</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='Images/WhatsApp Image 2024-07-29 at 19.44.56.jpeg') }}" alt="logo" class="logo-img" width="150" height="150">
+            <h1 class="website-name">AGRIMARKET</h1>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}" class="active">HOME</a>
+            <a href="{{ url_for('about') }}">ABOUT</a>
+            <a href="{{ url_for('auctions') }}">AUCTIONS</a>
+            <a href="{{ url_for('contact') }}">CONTACT<i class="fa-light fa-phone"></i></a>
+            <a href="{{ url_for('shop') }}">SHOP <span class="cart-icon">🛒</span></a>
+        </div>
+    </div>
+    
+    <div class="header-image">
+        <img src="{{ url_for('static', filename='Images/20.png') }}" alt="header-pic">
+    </div>
+    
+    <div class="body-content">
+        <h4 class="tagline">Your Go-To Platform For Agricultural Goods</h4>
+        <div class="image-gallery">
+            <img src="{{ url_for('static', filename='Images/images.jpeg') }}" alt="sheep" class="gallery-img">
+            <img src="{{ url_for('static', filename='Images/images-1.jpeg') }}" alt="cow" class="gallery-img">
+            <img src="{{ url_for('static', filename='Images/brownyng.png') }}" alt="chicken" class="gallery-img">
+        </div>
+        <a class="shop-now" href="{{ url_for('shop') }}">SHOP NOW</a>
+        <!-- <button class="shop-now" onclick="window.location.href='{{ url_for('shop') }}'">SHOP NOW</button>     -->
+
+        <div class="container">
+            <div class="chatbox">
+                <div class="chatbox__support">
+                    <div class="chatbox__header">
+                        <div class="chatbox__image--header">
+                            <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
+                        </div>
+                        <div class="chatbox__content--header">
+                            <h4 class="chatbox__heading--header">Chat support</h4>
+                            <p class="chatbox__description--header">Hi. My name is Farmie. How can I help you?</p>
+                        </div>
+                    </div>
+                    <div class="chatbox__messages">
+                        <div></div>
+                    </div>
+                    <div class="chatbox__footer">
+                        <input type="text" placeholder="Write a message...">
+                        <button class="chatbox__send--footer send__button">Send</button>
+                    </div>
+                </div>
+                <div class="chatbox__button">
+                    <button><img src="{{ url_for('static', filename='Images/chatbox-icon.svg') }}" /></button>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            const SCRIPT_ROOT = "{{ request.script_root }}";
+        </script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
