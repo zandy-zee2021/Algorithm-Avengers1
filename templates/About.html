@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Link to external CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}"> <!-- Link to external CSS -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
@@ -11,19 +12,20 @@
     <title>About Page</title>
 </head>
 <body class="about-page">
-<div class="navbar">
-    <div class="logo">
-        <img src="{{ url_for('static', filename='Images/WhatsApp Image 2024-07-29 at 19.44.56.jpeg') }}" alt="logo" class="logo-img" width="150" height="150">
-        <h1 class="website-name">AGRIMARKET</h1>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='Images/WhatsApp Image 2024-07-29 at 19.44.56.jpeg') }}" alt="logo" class="logo-img" width="150" height="150">
+            <h1 class="website-name">AGRIMARKET</h1>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}" class="active">HOME</a>
+            <a href="{{ url_for('about') }}">ABOUT</a>
+            <a href="{{ url_for('auctions') }}">AUCTIONS</a>
+            <a href="{{ url_for('contact') }}">CONTACT<i class="fa-light fa-phone"></i></a>
+            <a href="{{ url_for('shop') }}">SHOP<span class="bag-icon">🛍️</span></a></a>
+            <a href="{{ url_for('addToCart') }}"><span class="cart-icon">🛒</span></a>
+        </div>
     </div>
-    <div class="nav-links">
-        <a href="{{ url_for('home') }}" class="active">HOME</a>
-        <a href="{{ url_for('about') }}">ABOUT</a>
-        <a href="{{ url_for('auctions') }}">AUCTIONS</a>
-        <a href="{{ url_for('contact') }}">CONTACT<i class="fa-light fa-phone"></i></a>
-        <a href="{{ url_for('shop') }}">SHOP <span class="cart-icon">🛒</span></a>
-    </div>
-</div>
 
 <h1>Welcome to Agrimarket, where innovation meets agriculture!</h1>
 <div class="container">

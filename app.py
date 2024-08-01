@@ -23,6 +23,10 @@ def shop():
 def contact():
     return render_template('Contact.html')
 
+@app.route('/addToCart')
+def addToCart():
+    return render_template('add_to_cart.html')
+
 @app.route('/predict', methods=['POST'])
 def predict():
     text = request.get_json().get("message")
