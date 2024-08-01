@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/ShopPage.css') }}" > <!-- Link to external CSS -->
-    <script src="{{ url_for('static', filename = 'js/script.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ShopPage.css') }}"> <!-- Link to external CSS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <title>Shop Page</title>
-
 </head>
 <body>
     <div class="navbar">
         <div class="logo">
-            <img src="{{ url_for('static', filename = 'Images/WhatsApp Image 2024-07-29 at 19.44.56.jpeg') }}" alt="logo" class="logo-img">
+            <img src="{{ url_for('static', filename='Images/WhatsApp Image 2024-07-29 at 19.44.56.jpeg') }}" alt="logo" class="logo-img">
             <h1 class="website-name">AGRIMARKET</h1>
         </div>
         <div class="nav-links">
@@ -21,7 +20,6 @@
             <a href="{{ url_for('contact') }}">CONTACT<i class="fa-light fa-phone"></i></a>
             <a href="{{ url_for('shop') }}">SHOP <span class="cart-icon">🛒</span></a>
         </div>
-    </div>
     </div>
     
     <div class="search-container">
@@ -33,46 +31,44 @@
         <div class="image-gallery">
             <div class="gallery-arrow left">&#9664;</div>
             <div class="gallery-item">
-                <img src="{{ url_for('static', filename = 'Images/image4.png') }}" alt="sheep" class="gallery-img">
+                <img src="{{ url_for('static', filename='Images/image4.png') }}" alt="sheep" class="gallery-img">
                 <div class="gallery-price">R150</div>
                 <div class="gallery-price">White sheep</div>
                 <button class="add-to-cart">Add to Cart</button> 
             </div>
             <div class="gallery-item">
-                <img src="{{ url_for('static', filename = 'Images/image3.png') }}" alt="cow" class="gallery-img">
+                <img src="{{ url_for('static', filename='Images/image3.png') }}" alt="cow" class="gallery-img">
                 <div class="gallery-price">R1200</div>
                 <div class="gallery-price">White Lamb</div>
                 <button class="add-to-cart">Add to Cart</button> 
             </div>
             <div class="gallery-item">
-                <img src="{{ url_for('static', filename = 'Images/image2.png') }}" alt="spinach" class="gallery-img">
+                <img src="{{ url_for('static', filename='Images/image2.png') }}" alt="spinach" class="gallery-img">
                 <div class="gallery-price">R10</div>
-                <div class="gallery-price">suffolk sheep</div>
+                <div class="gallery-price">Suffolk sheep</div>
                 <button class="add-to-cart">Add to Cart</button> 
             </div>
             <div class="gallery-item">
-                <img src="{{ url_for('static', filename = 'Images/image7.png') }}" alt="spinach" class="gallery-img">
+                <img src="{{ url_for('static', filename='Images/image7.png') }}" alt="spinach" class="gallery-img">
                 <div class="gallery-price">R10</div>
                 <div class="gallery-price">Hen</div>
                 <button class="add-to-cart">Add to Cart</button> 
             </div>
             <div class="gallery-item">
-                <img src="{{ url_for('static', filename = 'Images/image6.png') }}" alt="spinach" class="gallery-img">
+                <img src="{{ url_for('static', filename='Images/image6.png') }}" alt="spinach" class="gallery-img">
                 <div class="gallery-price">R10</div>
-                <div class="gallery-price">white chicken</div>
+                <div class="gallery-price">White chicken</div>
                 <button class="add-to-cart">Add to Cart</button> 
             </div>
             <div class="gallery-item">
-                <img src="{{ url_for('static', filename = 'Images/image.png') }}" alt="spinach" class="gallery-img">
+                <img src="{{ url_for('static', filename='Images/image.png') }}" alt="spinach" class="gallery-img">
                 <div class="gallery-price">R10</div>
-                <div class="gallery-price">cow</div>
+                <div class="gallery-price">Cow</div>
                 <button class="add-to-cart">Add to Cart</button> 
+                <h1>thers an image</h1>
             </div>
-           
             <div class="gallery-arrow right">&#9654;</div>
         </div>
-
-    
     </div>
 </body>
 </html>
