@@ -134,77 +134,19 @@ body.about-page {
     padding: 0;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #f3efef;
-    border-bottom: 2px solid black;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.logo-img {
-    width: 90px;
-    height: 90px;
-}
 
 .website-name {
     font-size: 24px;
 }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 25px;
+/* Headings */
+h1, h2, h3, h4, h5 {
+    color: black;
+    text-align: center;
+    margin-top: 20px;
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: black;
-    font-size: 18px;
-    transition: color 0.3s ease;
-}
-
-.nav-links a.active,
-.nav-links a:hover {
-    color: green;
-}
-
-.cart-icon {
-    font-size: 20px;
-}
-
-h1 {
-    color: black;
-    text-align: center;
-    margin-top: 20px;
-}
-h2 {
-    color: black;
-    text-align: center;
-    margin-top: 20px;
-}
-h3 {
-    color: black;
-    text-align: center;
-    margin-top: 20px;
-}
-h4 {
-    color: black;
-    text-align: center;
-    margin-top: 20px;
-}
-h5 {
-    color: black;
-    text-align: center;
-    margin-top: 20px;
-}
+/* Container */
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -214,6 +156,7 @@ h5 {
     gap: 20px;
 }
 
+/* Image Section */
 .image {
     flex: 1;
     display: flex;
@@ -222,11 +165,13 @@ h5 {
 }
 
 .image img {
-    width: 500px;
+    width: 100%; /* Adjust to container width */
+    max-width: 500px; /* Ensure image does not exceed 500px */
     height: auto;
     border-radius: 10px;
 }
 
+/* Text Section */
 .text {
     flex: 1;
     padding-left: 15px;
@@ -234,8 +179,28 @@ h5 {
 
 .text p {
     font-size: 15px;
-    margin: 0;
+    margin: 0 0 20px; /* Add margin bottom to separate paragraphs */
     line-height: 1.5; /* Improved readability */
+    color: #333; /* Darker text color for better contrast */
+}
+
+.text h2 {
+    color: black;
+    margin-top: 20px;
+}
+
+.text h3 {
+    color: black;
+    margin-top: 20px;
+}
+
+.text ul {
+    margin: 10px 0; /* Adjust margin for list */
+    padding-left: 20px; /* Add padding for list items */
+}
+
+.text li {
+    margin-bottom: 10px; /* Space between list items */
 }
 
 .tagline {
@@ -276,44 +241,66 @@ h5 {
 }
 
 
+/* Contact Container */
 .contact-container {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #6f8d3e;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    background-color: #a5f096; /* Lighter background for better readability */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow */
+    border-radius: 12px; /* More rounded corners */
+    border: 1px solid #ddd; /* Light border for definition */
 }
+
+/* Contact Header */
 .h2-contact {
     text-align: center;
     margin-bottom: 20px;
+    color: #333; /* Darker color for better readability */
+    font-family: 'Arial', sans-serif; /* Clean, modern font */
 }
+
+/* Form Labels */
 label {
     display: block;
     margin-bottom: 8px;
+    font-weight: bold; /* Highlight labels */
+    color: #333; /* Darker text color */
 }
+
+/* Input Fields and Textarea */
 input[type="text"],
 input[type="email"],
 textarea {
-    width: 90%;
-    padding: 10px;
+    width: calc(100% - 22px); /* Adjusted for padding */
+    padding: 12px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 6px; /* Slightly more rounded corners */
+    font-family: 'Arial', sans-serif; /* Consistent font */
+    font-size: 16px; /* Slightly larger font size */
 }
+
+/* Button Styling */
 .button-contact {
     display: block;
-    width: 90%;
-    padding: 10px;
-    background-color: #5cb85c;
+    width: calc(100% - 22px); /* Adjusted for padding */
+    padding: 12px;
+    background-color: #4CAF50; /* Slightly darker green */
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px; /* More rounded corners */
     cursor: pointer;
+    font-family: 'Arial', sans-serif; /* Consistent font */
+    font-weight: bold; /* Emphasize button text */
+    text-align: center; /* Center-align button text */
 }
-button:hover {
-    background-color: #4cae4c;
+
+/* Button Hover Effect */
+.button-contact:hover {
+    background-color: #45a049; /* Slightly darker on hover */
 }
+
 
 
 /* CHATBOX

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}" > <!-- Link to external CSS -->
-    <script src="{{ url_for('static', filename = 'js/script.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Link to external CSS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script src="{{ url_for('static', filename='js/websitescript.js') }}"></script>
 
     <title>About Page</title>
@@ -12,7 +12,7 @@
 <body class="about-page">
 <div class="navbar">
     <div class="logo">
-        <img  src="{{ url_for('static', filename='Images/WhatsApp Image 2024-07-29 at 19.44.56.jpeg') }}" alt="logo" class="logo-img" width="150" height="150">
+        <img src="{{ url_for('static', filename='Images/WhatsApp Image 2024-07-29 at 19.44.56.jpeg') }}" alt="logo" class="logo-img" width="150" height="150">
         <h1 class="website-name">AGRIMARKET</h1>
     </div>
     <div class="nav-links">
@@ -24,31 +24,29 @@
     </div>
 </div>
 
-<h1> Welcome to Agrimarket, where innovation meets agriculture!</h1>
+<h1>Welcome to Agrimarket, where innovation meets agriculture!</h1>
 <div class="container">
     <div class="image">
         <img src="{{ url_for('static', filename='Images/about picture.png') }}" alt="about-pic" class="about-img">
     </div>
     <div class="text">
-        <p id="para1"><i>
-            <h2>Our Mission</h2>
+        <h2>Our Mission & Vision</h2>
+        <p>
             At Agrimarket, we are committed to transforming the way you buy livestock and crop products online. Our mission is to provide a seamless, efficient, and transparent marketplace that leverages cutting-edge artificial intelligence to enhance the buying and selling experience. We aim to support farmers, ranchers, and buyers by offering advanced tools and technology that simplify transactions and improve market access.
-        </i></p>
-        <p id="para2"><i>
-            <h3>What We Do</h3>
-
-            Our platform stands at the intersection of technology and agriculture. We offer a unique online auction experience for livestock and crop products, powered by sophisticated AI tools. Our key features include:
-
-            AI-Powered Auctions: Our intelligent auction system integrates real-time data analysis, predictive algorithms, and personalized recommendations to optimize bidding and buying processes.
-            Smart Chatbot Assistance: Our AI chatbot is designed to help you find the best deals, answer your questions, and guide you through the buying process with ease. With advanced image search capabilities, it ensures you can quickly locate and purchase the products you need.
-            User-Friendly Experience: We’ve built our platform with a focus on simplicity and efficiency, making it easy for users to navigate, search for products, and participate in auctions.
-        </i></p>
-        <p id="para3"><i>
-            <h4>Our Vision</h4>
-
+        </p>
+        <p>
             We envision a future where technology empowers every participant in the agricultural marketplace. By harnessing the power of AI, we aim to create a more dynamic, fair, and accessible environment for buying and selling livestock and crops. We believe in bridging the gap between traditional agriculture and modern technology to drive growth and sustainability in the industry.
-        </i></p>
-
+        </p>
+        <h3>What We Do</h3>
+        <p>
+            Our platform combines advanced technology with agriculture to offer a streamlined online auction experience for livestock and crops. Key features include:
+        </p>
+        <ul>
+            <li><strong>AI-Powered Auctions</strong>: Enhances bidding with real-time data and predictive algorithms.</li>
+            <li><strong>Smart Chatbot</strong>: Assists with deals, questions, and product searches, and any business related queries.</li>
+            <li><strong>User-Friendly Design</strong>: Simple and efficient navigation for a seamless auction experience.</li>
+        </ul>
+        
     </div>
 </div>
 </body>
