@@ -33,7 +33,7 @@ const sendImageToProcessing = async (imagePath) => {
     form.append('file', await fetch(imagePath).then(res => res.blob()), 'image.jpg');
 
     try {
-        const response = await axios.post('http://localhost:8000/api/image-processing/', form, {
+        const response = await axios.post('https://f6af-41-116-106-123.ngrok-free.app/api/image-processing/', form, {
             headers: {
                 ...form.getHeaders(),
             },
