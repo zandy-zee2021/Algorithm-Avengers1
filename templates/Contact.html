@@ -12,56 +12,51 @@
     <title>Contact Page</title>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <img src="{{ url_for('static', filename='Images/WhatsApp Image 2024-07-29 at 19.44.56.jpeg') }}" alt="logo" class="logo-img" width="150" height="150">
-            <h1 class="website-name">AGRIMARKET</h1>
-        </div>
-        <div class="nav-links">
-            <a href="{{ url_for('home') }}" >HOME</a>
-            <a href="{{ url_for('about') }}">ABOUT</a>
-            <a href="{{ url_for('auctions') }}">AUCTIONS</a>
-            <a href="{{ url_for('contact') }}" class="active">CONTACT</a>
-            <a href="{{ url_for('addToCart') }}">SHOP<span class="cart-icon">🛒</span></a>
-
-        </div>
+<div class="navbar">
+    <div class="logo">
+        <img src="{{ url_for('static', filename='Images/WhatsApp Image 2024-07-29 at 19.44.56.jpeg') }}" alt="logo" class="logo-img" width="150" height="150">
+        <h1 class="website-name">AGRIMARKET</h1>
     </div>
-    <div class="contact-container">
-            <p id="para4"><i>
-                <h5> Join Us</h5>
-    
-                We invite you to explore Agrimarket and experience the future of agricultural trading.<br> Whether you’re a farmer looking to sell your livestock, a buyer seeking quality crops,<br> or someone interested in the latest in AI-driven technology, we’re here to support you every step of the way.
-                Thank you for choosing Agrimarket. Together, we’re shaping the future of agriculture!
-                <h2 class = "h2-contact">Contact Us</h2>
-                <fieldset>
+    <div class="nav-links">
+        <a href="{{ url_for('home') }}" class="active">HOME</a>
+        <a href="{{ url_for('about') }}">ABOUT</a>
+        <a href="{{ url_for('auctions') }}">AUCTIONS</a>
+        <a href="{{ url_for('contact') }}">CONTACT</a>
+        <a href="{{ url_for('addToCart') }}">SHOP<span class="cart-icon">🛒</span></a>
 
-                    <form action="process_contact_form.php" method="post">
-                        <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required><br><br>
-        
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required><br><br>
-                    
-                    <label for="message">Message</label><br>
-                    <textarea id="message" name="message" rows="5" required></textarea><br><br>
-                    
-                    <button class= "button-contact" type="submit">Submit</button>
-                </form>
-            </fieldset>
-            </i></p>
-        </div>
     </div>
+</div>
+<div class="contact-container">
+    <p id="para4"><i>
+        <h5> Join Us</h5>
 
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+        We invite you to explore Agrimarket and experience the future of agricultural trading.<br> Whether you’re a farmer looking to sell your livestock, a buyer seeking quality crops,<br> or someone interested in the latest in AI-driven technology, we’re here to support you every step of the way.
+        Thank you for choosing Agrimarket. Together, we’re shaping the future of agriculture!
+        <h2 class = "h2-contact">Contact Us</h2>
+        <fieldset>
 
-            // Show the thank you message
-            document.getElementById('thankYouMessage').style.display = 'block';
+            <form action="{{ url_for('contact') }}" method="post">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required><br><br>
 
-            // Optionally, you can clear the form fields here
-            // this.reset();
-        });
-    </script>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="message">Message</label><br>
+                <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+                <button class= "button-contact" type="submit">Submit</button>
+            </form>
+        </fieldset>
+    </i></p>
+</div>
+</div>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        alert('Thank you for contacting us, we\'ll be in touch soon.'); // Show the alert
+    });
+</script>
 </body>
 </html>

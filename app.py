@@ -16,8 +16,11 @@ def auctions():
     return render_template('Auctions.html')
 
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    if request.method == 'POST':
+
+        return 'Thank you for contacting us, we\'ll be in touch soon.'
     return render_template('Contact.html')
 
 @app.route('/addToCart')
