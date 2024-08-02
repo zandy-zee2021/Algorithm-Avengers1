@@ -26,7 +26,7 @@ pip install -r requirements.txt
 1. **Clone the repository:**
 
    ```bash
-   git clone https://
+   git clone https://github.com/zandy-zee2021/Algorithm-Avengers1.git
    cd Algorithm-Avengers1
    ```
 
