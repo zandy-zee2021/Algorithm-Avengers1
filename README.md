@@ -2,7 +2,7 @@
 
 Agri Market is a web-based solution designed to address the marketing and sales challenges faced by livestock farmers. Our platform provides a comprehensive set of features to facilitate smooth and secure transactions within the livestock farming community.
 
-## Features
+## Website Features
 
 - **Chatbox:** Users can ask any queries and receive real-time assistance.
 - **About Page:** Detailed description of our mission and vision.
