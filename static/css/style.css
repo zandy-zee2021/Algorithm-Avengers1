@@ -11,7 +11,7 @@ body {
 
 .header-image img {
     width: 95%; /* Adjust width to fit container */
-    height: auto;
+    height: 400px;
     display: block; /* Ensure the image behaves like a block element */
     margin: 0 auto; /* Center the image */
     margin-top: 10px;
@@ -30,6 +30,7 @@ body {
     font-weight: normal; /* Remove bold styling */
     font-size: 28px;
     margin-top: -10px;
+    margin-left: 15px;
 }
 
 .image-gallery {
@@ -40,7 +41,7 @@ body {
 }
 
 .gallery-img {
-    width: 200px; /* Set width for gallery images */
+    width: 220px; /* Set width for gallery images */
     height: auto;
 }
 
@@ -54,7 +55,7 @@ body {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, box-shadow 0.3s;
     text-decoration: none;
-    margin-top: -90px; /* Reduce space above button */
+    margin-top: -30px; /* Reduce space above button */
     width: 200px;
 }
 
@@ -251,9 +252,9 @@ textarea {
 
 /* CHATBOX
 =============== */
-.chatbox {
+.container .chatbox {
     position: absolute;
-    bottom: 30px;
+    bottom: -220px;
     right: 30px;
 }
 
@@ -267,6 +268,21 @@ textarea {
     z-index: -123456;
     opacity: 0;
     transition: all .5s ease-in-out;
+}
+
+/* LABEL */
+.container .chatbox-label {
+    background: #a169ce; /* Background color of the label */
+    color: rgb(46, 42, 42); /* Text color */
+    padding: 10px 20px; /* Padding for the oval shape */
+    border-radius: 30px; /* Makes it oval */
+    font-size: 14px; /* Font size of the text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; /* Prevents text wrapping */
+    margin-right: 60px;
+    margin-bottom: -45px;
 }
 
 /* CONTENT ISOPEN */
@@ -427,6 +443,15 @@ textarea {
     border-bottom-left-radius: 50px;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+}
+
+.chatbox-container {
+    display: flex;
+    align-items: center; /* Vertically centers items */
+}
+
+.chatbox-label {
+    margin-right: 10px; /* Adds some space between the two divs */
 }
 
 /* add to cart */
