@@ -1,5 +1,4 @@
 # Algorithm-Avengers
-Here's a README file for your Algorithm Avenger project:
 
 Agri Market is a web-based solution designed to address the marketing and sales challenges faced by livestock farmers. Our platform provides a comprehensive set of features to facilitate smooth and secure transactions within the livestock farming community.
 
