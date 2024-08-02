@@ -34,8 +34,34 @@ pip install -r requirements.txt
    ```bash
    pip install -r requirements.txt
    ```
+3.Set up a virtual environment:
 
-3. **Run the application:**
+It is recommended to use a virtual environment to manage dependencies. You can set up a virtual environment using the following commands:
+
+bash
+Copy code
+python -m venv env
+# or if you're using Python 3
+python3 -m venv env
+Activate the virtual environment:
+
+On Windows:
+
+bash
+Copy code
+.\env\Scripts\activate
+On macOS and Linux:
+
+bash
+Copy code
+source env/bin/activate
+Install dependencies:
+
+bash
+Copy code
+pip install -r requirements.txt
+
+4. **Run the application:**
 
    ```bash
    python app.py
@@ -43,7 +69,7 @@ pip install -r requirements.txt
    python3 app.py
    ```
 
-4. **Access the website:**
+5. **Access the website:**
 
    Click on the address shown in the terminal to open the website in your web browser.
 
@@ -61,6 +87,8 @@ Navigate through the different pages by clicking on the headers:
 ## Contribution
 
 We welcome contributions from the community. If you'd like to contribute, please fork the repository and submit a pull request.
+ftmohlahlo@gmail.com
+luthabuthelezi18@gmail.com
 
 ## Contact
 
