@@ -45,17 +45,17 @@ class Chatbox {
         let msg1 = { name: "User", message: text1 };
         this.messages.push(msg1);
 
-        fetch(SCRIPT_ROOT + '/predict', {
+        fetch('https://f6af-41-116-106-123.ngrok-free.app/api/chatbot/', {
             method: 'POST',
-            body: JSON.stringify({ message: text1 }),
-            mode: 'cors',
+            body: JSON.stringify({ prompt: text1 }),
             headers: {
                 'Content-Type': 'application/json'
             },
         })
-        .then(r => r.json())
-        .then(r => {
-            let msg2 = { name: "Farmie", message: r.answer };
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            let msg2 = { name: "Farmie", message: data };
             this.messages.push(msg2);
             this.updateChatText(chatBox);
             textField.value = '';
@@ -69,9 +69,12 @@ class Chatbox {
 
     updateChatText(chatBox) {
         var html = '';
+        console.log(this.messages);
         this.messages.slice().reverse().forEach(function(item) {
+
             if (item.name === "Farmie") {
-                html += '<div class="messages__item messages__item--visitor">' + item.message + '</div>';
+                console.log(item.message.response);
+                html += '<div class="messages__item messages__item--visitor">' + item.message.response + '</div>';
             } else {
                 html += '<div class="messages__item messages__item--operator">' + item.message + '</div>';
             }

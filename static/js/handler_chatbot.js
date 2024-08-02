@@ -1,10 +1,20 @@
 // Ensure axios is available in your environment
 const sendMessageToChatbot = async (message) => {
   try {
-    const response = await axios.post('/predict', { message });
-    console.log('Response:', response.data.answer);
-    // Update the chatbox with the chatbot's response
-    document.getElementById('chatbox').innerHTML += `<div>Farmie: ${response.data.answer}</div>`;
+    // Send a POST request to the chatbot API
+    const response = await axios.post('https://f6af-41-116-106-123.ngrok-free.app/api/chatbot/',
+    {
+      prompt: message  // Adjust the key from "message" to "prompt"
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json'  // Set the Content-Type header
+      }
+    });
+
+    // Log the response and update the chatbox with the chatbot's response
+    console.log('Response:', response);
+//    document.getElementById('chatbox').innerHTML += `<div>Farmie: ${response}</div>`;
   } catch (error) {
     console.error('There was an error!', error);
   }
