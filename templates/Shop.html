@@ -6,98 +6,109 @@
 
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/ShopPage.css') }}">
-    <script src="{{ url_for('static', filename='js/gatherImages.js') }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <script src="{{ url_for('static', filename='js/cartScript.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/websiteScript.js') }}" defer></script>
     <title>Shop Page</title>
 </head>
 <body>
-<div class="navbar">
-    <div class="logo">
-        <img src="{{ url_for('static', filename='Images/WhatsApp Image 2024-07-29 at 19.44.56.jpeg') }}" alt="logo" class="logo-img" width="150" height="150">
-        <h1 class="website-name">AGRIMARKET</h1>
-    </div>
-    <div class="nav-links">
-        <a href="{{ url_for('home') }}" class="active">HOME</a>
-        <a href="{{ url_for('about') }}">ABOUT</a>
-        <a href="{{ url_for('auctions') }}">AUCTIONS</a>
-        <a href="{{ url_for('contact') }}">CONTACT<i class="fa-light fa-phone"></i></a>
-        <a href="{{ url_for('shop') }}">SHOP<span class="bag-icon">🛍️</span></a>
-        <a href="{{ url_for('addToCart') }}"><span class="cart-icon">🛒</span></a>
-    </div>
-</div>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='Images/WhatsApp Image 2024-07-29 at 19.44.56.jpeg') }}" alt="logo" class="logo-img" width="150" height="150">
+            <h1 class="website-name">AGRIMARKET</h1>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}" class="active">HOME</a>
+            <a href="{{ url_for('about') }}">ABOUT</a>
+            <a href="{{ url_for('auctions') }}">AUCTIONS</a>
+            <a href="{{ url_for('contact') }}">CONTACT<i class="fa-light fa-phone"></i></a>
+            <a href="{{ url_for('shop') }}">SHOP<span class="bag-icon">🛍️</span></a>
+            <a href="{{ url_for('addToCart') }}"><span class="cart-icon">🛒</span></a>
 
-<div class="search-container">
-    <input type="text" class="search-bar" placeholder="Search products...">
-    <button class="search-button">Send</button>
-</div>
+        </div>
+    </div>
+    
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search products...">
+        <button class="search-button">Send</button>
+    </div>
 
-<div class="body-content">
-    <div class="image-gallery">
-        <div class="gallery-arrow left" id="leftArrow"></div>
-        <div class="gallery-items-container">
-            <div class="gallery-item" id="galleryItem1">
-                <img src="{{ url_for('static', filename='Images/image4.png') }}" alt="sheep" class="gallery-img">
-                <div class="gallery-price">R1500</div>
-                <div class="gallery-price">White sheep</div>
-                <button class="add-to-cart" onclick="addToCart(0)">Add to Cart</button>
-            </div>
-            <div class="gallery-item" id="galleryItem2">
-                <img src="{{ url_for('static', filename='Images/image3.png') }}" alt="cow" class="gallery-img">
-                <div class="gallery-price">R1200</div>
-                <div class="gallery-price">White Lamb</div>
-                <button class="add-to-cart" onclick="addToCart(1)">Add to Cart</button>
-            </div>
-            <div class="gallery-item" id="galleryItem3">
-                <img src="{{ url_for('static', filename='Images/image2.png') }}" alt="sheep" class="gallery-img">
-                <div class="gallery-price">R1500</div>
-                <div class="gallery-price">Suffolk sheep</div>
-                <button class="add-to-cart" onclick="addToCart(2)">Add to Cart</button>
-            </div>
-            <div class="gallery-item" id="galleryItem4">
-                <img src="{{ url_for('static', filename='Images/image7.png') }}" alt="hen" class="gallery-img">
-                <div class="gallery-price">R70</div>
-                <div class="gallery-price">Hen</div>
-                <button class="add-to-cart" onclick="addToCart(3)">Add to Cart</button>
-            </div>
-            <div class="gallery-item" id="galleryItem5">
-                <img src="{{ url_for('static', filename='Images/image6.png') }}" alt="chicken" class="gallery-img">
-                <div class="gallery-price">R70</div>
-                <div class="gallery-price">White chicken</div>
-                <button class="add-to-cart" onclick="addToCart(4)">Add to Cart</button>
-            </div>
-            <div class="gallery-item" id="galleryItem6">
-                <img src="{{ url_for('static', filename='Images/image.png') }}" alt="cow" class="gallery-img">
-                <div class="gallery-price">R11000</div>
-                <div class="gallery-price">Cow</div>
-                <button class="add-to-cart" onclick="addToCart(5)">Add to Cart</button>
-            </div>
-            <div class="gallery-item">
-                <img src="{{ url_for('static', filename='Images/download-2.jpeg') }}" alt="goat" class="gallery-img">
-                <div class="gallery-price">R2000</div>
-                <div class="gallery-price">goat</div>
-                <button class="add-to-cart" onclick="addToCart(6)">Add to Cart</button>
-            </div>
-            <div class="gallery-item">
-                <img src="{{ url_for('static', filename='Images/calf.jpeg') }}" alt="calf" class="gallery-img">
-                <div class="gallery-price">R5000</div>
-                <div class="gallery-price">calf</div>
-                <button class="add-to-cart" onclick="addToCart(7)">Add to Cart</button>
-            </div>
-            <div class="gallery-item">
-                <img src="{{ url_for('static', filename='Images/babygoat.jpeg') }}" alt="kid" class="gallery-img">
-                <div class="gallery-price">R1100</div>
-                <div class="gallery-price">kid</div>
-                <button class="add-to-cart" onclick="addToCart(8)">Add to Cart</button>
-            </div>
-            <div class="gallery-item">
-                <img src="{{ url_for('static', filename='Images/chick.jpeg') }}" alt="chick" class="gallery-img">
-                <div class="gallery-price">R10</div>
-                <div class="gallery-price">chick</div>
-                <button class="add-to-cart" onclick="addToCart(9)">Add to Cart</button>
+    <div class="body-content">
+        <div class="image-gallery">
+            <div class="gallery-items-container">
+                <!-- Gallery Items -->
+                <div class="gallery-item" id="galleryItem1"  data-id="product1">
+                    <img src="{{ url_for('static', filename='Images/image4.png') }}" alt="sheep" class="gallery-img">
+                    <div class="gallery-price">R1500</div>
+                    <div class="gallery-price">White sheep</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="gallery-item" id="galleryItem2"  data-id="product2">
+                    <img src="{{ url_for('static', filename='Images/image3.png') }}" alt="cow" class="gallery-img">
+                    <div class="gallery-price">R1200</div>
+                    <div class="gallery-price">White Lamb</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="gallery-item" id="galleryItem3"  data-id="product3">
+                    <img src="{{ url_for('static', filename='Images/image2.png') }}" alt="sheep" class="gallery-img">
+                    <div class="gallery-price">R1500</div>
+                    <div class="gallery-price">Suffolk sheep</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="gallery-item" id="galleryItem4"  data-id="product4">
+                    <img src="{{ url_for('static', filename='Images/image7.png') }}" alt="hen" class="gallery-img">
+                    <div class="gallery-price">R70</div>
+                    <div class="gallery-price">Hen</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="gallery-item" id="galleryItem5"  data-id="product5">
+                    <img src="{{ url_for('static', filename='Images/image6.png') }}" alt="chicken" class="gallery-img">
+                    <div class="gallery-price">R70</div>
+                    <div class="gallery-price">White chicken</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="gallery-item" id="galleryItem6"  data-id="product6">
+                    <img src="{{ url_for('static', filename='Images/image.png') }}" alt="cow" class="gallery-img">
+                    <div class="gallery-price">R11000</div>
+                    <div class="gallery-price">Cow</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="gallery-item"  data-id="product7">
+                    <img src="{{ url_for('static', filename = 'Images/download-2.jpeg') }}" alt="goat" class="gallery-img">
+                    <div class="gallery-price">R2000</div>
+                    <div class="gallery-price">goat</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="gallery-item"  data-id="product8">
+                    <img src="{{ url_for('static', filename = 'Images/calf.jpeg') }}" alt="calf" class="gallery-img">
+                    <div class="gallery-price">R5000</div>
+                    <div class="gallery-price">calf</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="gallery-item"  data-id="product9">
+                    <img src="{{ url_for('static', filename = 'Images/babygoat.jpeg') }}" alt="kid" class="gallery-img">
+                    <div class="gallery-price">R1100</div>
+                    <div class="gallery-price">kid</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="gallery-item"  data-id="product10">
+                    <img src="{{ url_for('static', filename = 'Images/chick.jpeg') }}" alt="chick" class="gallery-img">
+                    <div class="gallery-price">R10</div>
+                    <div class="gallery-price">chick</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            
             </div>
         </div>
-        <div class="gallery-arrow right" id="rightArrow"></div>
     </div>
-</div>
+
+    <div class="cartTab">
+        <h1>Shopping Cart</h1>
+        <div class="listCart"></div>
+        <div class="btn">
+            <button class="close">CLOSE</button>
+            <button class="checkOut">Check Out</button>
+        </div>
+    </div>
 </body>
 </html>

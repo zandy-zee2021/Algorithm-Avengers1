@@ -84,8 +84,31 @@ class Chatbox {
     }
 }
 
-// Initialize the Chatbox
 document.addEventListener('DOMContentLoaded', () => {
     const chatBox = new Chatbox();
     chatBox.display();
+
+    // Set auction dates
+    const auctionDates = [
+        { id: 'date1', date: '2024-08-10' },
+        { id: 'date2', date: '2024-08-15' },
+        { id: 'date3', date: '2024-08-20' },
+        { id: 'date4', date: '2024-08-25' },
+    ];
+
+    auctionDates.forEach(auction => {
+        const dateElement = document.getElementById(auction.id);
+        if (dateElement) {
+            dateElement.textContent = auction.date;
+        }
+    });
+
+    // Highlight the active navigation link
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        if (link.href.includes(currentPath)) {
+            link.classList.add('active');
+        }
+    });
 });
