@@ -15,9 +15,6 @@ def about():
 def auctions():
     return render_template('Auctions.html')
 
-@app.route('/shop')
-def shop():
-    return render_template('Shop.html')
 
 @app.route('/contact')
 def contact():
