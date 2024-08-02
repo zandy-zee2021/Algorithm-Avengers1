@@ -1,23 +1,30 @@
+/**
+ * Initializes and sets up event listeners for various functionalities.
+ */
 document.addEventListener('DOMContentLoaded', function() {
+    // Select elements for navigation links, gallery items, and arrows
     const navLinks = document.querySelectorAll('.nav-links a');
     const galleryItems = document.querySelectorAll('.gallery-item');
     const leftArrow = document.querySelector('.gallery-arrow.left');
     const rightArrow = document.querySelector('.gallery-arrow.right');
-    let currentIndex = 0;
+    let currentIndex = 0; // Tracks the current index of the gallery item
 
-    // Function to set the active gallery item based on the current index
+    /**
+     * Sets the active gallery item based on the current index.
+     */
     const setActiveGalleryItem = () => {
         galleryItems.forEach((item, index) => {
             item.classList.toggle('active', index === currentIndex);
         });
     };
 
-    // Event listeners for gallery arrows
+    // Event listener for the left arrow to show previous gallery item
     leftArrow.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
         setActiveGalleryItem();
     });
 
+    // Event listener for the right arrow to show next gallery item
     rightArrow.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % galleryItems.length;
         setActiveGalleryItem();
@@ -26,7 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial setup for gallery items
     setActiveGalleryItem();
 
-    // Function to set the active link based on the current hash
+    /**
+     * Sets the active navigation link based on the current URL hash.
+     */
     const setActiveLink = () => {
         const currentHash = window.location.hash;
         navLinks.forEach(link => {
@@ -38,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    // Add event listeners to each link to set the active class on click
+    // Add event listeners to each link to update the active class on click
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             navLinks.forEach(l => l.classList.remove('active'));
@@ -49,25 +58,34 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set active link on page load based on the current URL hash
     setActiveLink();
 
-    // Update active link when the hash changes (e.g., when navigating through the page)
+    // Update active link when the hash changes
     window.addEventListener('hashchange', setActiveLink);
 });
 
+/**
+ * Scrolls the gallery items container smoothly by a specified distance.
+ * @param {number} distance - The distance to scroll, positive or negative.
+ */
+function scrollGallery(distance) {
+    document.querySelector('.gallery-items-container').scrollBy({
+        left: distance,
+        behavior: 'smooth'
+    });
+}
+
+// Event listeners for scrolling gallery items
 document.getElementById('leftArrow').addEventListener('click', () => {
-    document.querySelector('.gallery-items-container').scrollBy({
-        left: -300,
-        behavior: 'smooth'
-    });
+    scrollGallery(-300); // Scroll left by 300 pixels
 });
-
 document.getElementById('rightArrow').addEventListener('click', () => {
-    document.querySelector('.gallery-items-container').scrollBy({
-        left: 300,
-        behavior: 'smooth'
-    });
+    scrollGallery(300); // Scroll right by 300 pixels
 });
 
-// auction times
+/**
+ * Starts a countdown timer that updates the display element.
+ * @param {number} duration - Duration of the timer in seconds.
+ * @param {HTMLElement} display - The element where the timer is displayed.
+ */
 function startAuctionTimer(duration, display) {
     let timer = duration, hours, minutes, seconds;
     setInterval(function () {
@@ -88,6 +106,7 @@ function startAuctionTimer(duration, display) {
 }
 
 window.onload = function () {
+    // Initialize timers for auction countdowns
     const duration = 5 * 60 * 60; // Timer duration in seconds (5 hours)
     const timer1 = document.querySelector('#timer1');
     const timer2 = document.querySelector('#timer2');
@@ -100,8 +119,8 @@ window.onload = function () {
     startAuctionTimer(duration, timer4);
 };
 
-// add to cart
-let itemList =  document.querySelector('.items');
+// Add to Cart functionality
+let itemList = document.querySelector('.items');
 let cart = document.querySelector('.cart');
 let cartList = document.querySelector('.cart-list');
 let total = document.querySelector('.total');
@@ -117,7 +136,7 @@ let items = [
     },
     {
         id: 2,
-        name: 'sheep',
+        name: 'Sheep',
         image: "{{ url_for('static', filename='Images/image4.png') }}" ,
         price: 1500
     },
@@ -165,6 +184,9 @@ let items = [
     },
 ];
 
+/**
+ * Initializes item cards and adds them to the item list.
+ */
 function initItem() {
     items.forEach((value, key) => {
         let card = document.createElement('div');
@@ -185,53 +207,10 @@ initItem();
 
 let cartLists = [];
 
+/**
+ * Adds an item to the cart based on its index.
+ * @param {number} key - Index of the item in the items array.
+ */
 function addToCart(key) {
     if (cartLists[key] == null) {
-        cartLists[key] = JSON.parse(JSON.stringify(items[key]));
-        cartLists[key].quantity = 1;
-    }
-    reloadCart();
-}
-
-function reloadCart() {
-    cartList.innerHTML = '';
-    let totalPrice = 0;
-    cartLists.forEach((value, key) => {
-        totalPrice = totalPrice + value.price;
-
-        if (value != null) {
-            let listItem = document.createElement('li');
-            listItem.setAttribute('class', 'list-group-item');
-            listItem.innerHTML = `
-                <div><img src="${value.image}" style="width: 80px"/></div>
-                <div><h5 class="mt-1">${value.name}</h5></div>
-                <div><h6 class="mt-2">${value.price.toLocaleString()}</h6></div>
-                <div>
-                    <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
-                    <div class="count m-2">${value.quantity}</div>
-                    <button onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
-                </div>`;
-            cartList.appendChild(listItem);
-        }
-    });
-
-    // Calculate subtotal, tax, and total
-    subtotal.innerText = totalPrice.toLocaleString();
-    tax.innerText = (totalPrice * 0.12).toLocaleString(); // Assuming 12% tax
-    total.innerText = (totalPrice + parseFloat(tax.innerText)).toLocaleString();
-}
-
-function changeQuantity(key, quantity) {
-    if (quantity == 0) {
-        delete cartLists[key];
-    } else {
-        cartLists[key].quantity = quantity;
-        cartLists[key].price = quantity * items[key].price;
-    }
-    reloadCart();
-}
-
-function clearCart() {
-    cartLists = [];
-    reloadCart();
-}
+        cartLists[key

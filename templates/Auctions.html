@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/ShopPage.css') }}"> <!-- Link to external CSS -->
-    <script src="{{ url_for('static', filename='js/websitescript.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/websitescript.js') }}" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <title>Auctions Page</title>
@@ -25,13 +25,12 @@
 </div>
 
 <div class="search-container">
-    <input type="text" class="search-bar" placeholder="Search products..."> 
+    <input type="text" class="search-bar" placeholder="Search products...">
     <button class="search-button" onclick="handleSearch()">Send</button><br><br><span></span>
-    <br><input type="text" class="imageURL" placeholder="Enter image URL here">
+    <br><input type="text" id="imageURL" class="imageURL" placeholder="Enter image URL here">
     <button class="upload-button" onclick="handleUpload()">Upload</button>
-
-
 </div>
+
 <!-- Modal -->
 <div id="myModal" class="modal">
     <div class="modal-content">
@@ -40,15 +39,13 @@
     </div>
 </div>
 
-
 <div class="image-gallery">
-<!--    <div class="gallery-arrow left" onclick="prevSlide()"></div>-->
     <div class="gallery-item">
         <img src="{{ url_for('static', filename='Images/images.jpeg') }}" alt="Image 1" class="gallery-img">
         <div class="gallery-caption">
             <span class="caption-text">Auction starting in: </span>
             <span class="timer" id="timer1"></span>
-    </div>
+        </div>
     </div>
     <div class="gallery-item">
         <img src="{{ url_for('static', filename='Images/image.png') }}" alt="Image 2" class="gallery-img">
@@ -71,80 +68,77 @@
             <span class="timer" id="timer4"></span>
         </div>
     </div>
-    <script>
-        async function handleUpload() {
-    const uploadButton = document.querySelector('.upload-button');
-    const imageUrlInput = document.getElementById('imageURL');
-    const imageUrl = imageUrlInput.value.trim();
+</div>
 
-    if (!imageUrl) {
-        alert('Please provide an image URL.');
-        return;
-    }
+<script>
+    async function handleUpload() {
+        const uploadButton = document.querySelector('.upload-button');
+        const imageUrlInput = document.getElementById('imageURL');
+        const imageUrl = imageUrlInput.value.trim();
 
-    uploadButton.textContent = 'Processing...';
-    uploadButton.disabled = true;
-
-    try {
-        const response = await fetch('https://f6af-41-116-106-123.ngrok-free.app/api/auction-analysis/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                image: imageUrl,
-                prompt: "Evaluate the health and suitability of the livestock for auction based on this image of medical record of the particular livestock. please respond with eligible or not eligible only do not explain"
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+        if (!imageUrl) {
+            alert('Please provide an image URL.');
+            return;
         }
 
-        const result = await response.json();
-        console.log('Response:', result.response);
+        uploadButton.textContent = 'Processing...';
+        uploadButton.disabled = true;
 
-        // Check the response and set the modal message accordingly
-        let modalMessage = '';
-        if (result.response.toLowerCase() === 'eligible') {
-            modalMessage = 'The livestock is eligible for auction.';
-        } else if (result.response.toLowerCase() === 'not eligible') {
-            modalMessage = 'The livestock is not eligible for auction.';
-        } else {
-            modalMessage = `Response: ${result.response}`;
+        try {
+            const response = await fetch('https://nerdma-b8ad4e234783.herokuapp.com/api/auction-analysis/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    image: imageUrl,
+                    prompt: "Evaluate the health and suitability of the livestock for auction based on this image of medical record of the particular livestock. please respond with eligible or not eligible only do not explain"
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log('Response:', result.response);
+
+            let modalMessage = '';
+            if (result.response.toLowerCase() === 'eligible') {
+                modalMessage = 'The livestock is eligible for auction.';
+            } else if (result.response.toLowerCase() === 'not eligible') {
+                modalMessage = 'The livestock is not eligible for auction.';
+            } else {
+                modalMessage = `Response: ${result.response}`;
+            }
+
+            document.getElementById('modalMessage').textContent = modalMessage;
+            document.getElementById('myModal').style.display = "block";
+
+            uploadButton.textContent = 'Success!';
+        } catch (error) {
+            console.error('There was an error!', error);
+            uploadButton.textContent = 'Upload Failed';
+        } finally {
+            setTimeout(() => {
+                uploadButton.textContent = 'Upload';
+                uploadButton.disabled = false;
+            }, 2000);
         }
-
-        // Display the result in a modal
-        document.getElementById('modalMessage').textContent = modalMessage;
-        document.getElementById('myModal').style.display = "block";
-
-        uploadButton.textContent = 'Success!';
-    } catch (error) {
-        console.error('There was an error!', error);
-        uploadButton.textContent = 'Upload Failed';
-    } finally {
-        setTimeout(() => {
-            uploadButton.textContent = 'Upload';
-            uploadButton.disabled = false;
-        }, 2000);
     }
-}
 
-// Close the modal when the user clicks the "x"
-document.querySelector('.close').onclick = function() {
-    document.getElementById('myModal').style.display = "none";
-}
-
-// Close the modal when the user clicks anywhere outside of it
-window.onclick = function(event) {
-    if (event.target == document.getElementById('myModal')) {
+    // Close the modal when the user clicks the "x"
+    document.querySelector('.close').onclick = function() {
         document.getElementById('myModal').style.display = "none";
     }
-}
 
-
-    </script>
-</div>>
+    // Close the modal when the user clicks anywhere outside of it
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('myModal')) {
+            document.getElementById('myModal').style.display = "none";
+        }
+    }
+</script>
 
 </body>
 </html>
