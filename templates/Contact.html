@@ -18,10 +18,10 @@
             <h1 class="website-name">AGRIMARKET</h1>
         </div>
         <div class="nav-links">
-            <a href="{{ url_for('home') }}" class="active">HOME</a>
+            <a href="{{ url_for('home') }}" >HOME</a>
             <a href="{{ url_for('about') }}">ABOUT</a>
             <a href="{{ url_for('auctions') }}">AUCTIONS</a>
-            <a href="{{ url_for('contact') }}">CONTACT</a>
+            <a href="{{ url_for('contact') }}" class="active">CONTACT</a>
             <a href="{{ url_for('addToCart') }}">SHOP<span class="cart-icon">🛒</span></a>
 
         </div>
@@ -51,7 +51,17 @@
             </i></p>
         </div>
     </div>
-    
-   
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Show the thank you message
+            document.getElementById('thankYouMessage').style.display = 'block';
+
+            // Optionally, you can clear the form fields here
+            // this.reset();
+        });
+    </script>
 </body>
 </html>

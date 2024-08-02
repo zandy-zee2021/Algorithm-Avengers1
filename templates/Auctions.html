@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/ShopPage.css') }}"> <!-- Link to external CSS -->
     <script src="{{ url_for('static', filename='js/websitescript.js') }}" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 
     <title>Auctions Page</title>
 </head>
@@ -16,9 +17,9 @@
         <h1 class="website-name">AGRIMARKET</h1>
     </div>
     <div class="nav-links">
-        <a href="{{ url_for('home') }}" class="active">HOME</a>
+        <a href="{{ url_for('home') }}" >HOME</a>
         <a href="{{ url_for('about') }}">ABOUT</a>
-        <a href="{{ url_for('auctions') }}">AUCTIONS</a>
+        <a href="{{ url_for('auctions') }}" class="active">AUCTIONS</a>
         <a href="{{ url_for('contact') }}">CONTACT</a>
         <a href="{{ url_for('addToCart') }}">SHOP<span class="cart-icon">🛒</span></a>
     </div>
@@ -50,21 +51,21 @@
     <div class="gallery-item">
         <img src="{{ url_for('static', filename='Images/image.png') }}" alt="Image 2" class="gallery-img">
         <div class="gallery-caption">
-            <span class="caption-text">Auction starting in: </span>
+            <span class="caption-text">Auction starting in:2024-08-20 </span>
             <span class="timer" id="timer2"></span>
         </div>
     </div>
     <div class="gallery-item">
         <img src="{{ url_for('static', filename='Images/image7.png') }}" alt="Chicken" class="gallery-img">
         <div class="gallery-caption">
-            <span class="caption-text">Auction starting in: </span>
+            <span class="caption-text">Auction starting in:2024-08-20 </span>
             <span class="timer" id="timer3"></span>
         </div>
     </div>
     <div class="gallery-item">
         <img src="{{ url_for('static', filename='Images/images-1.jpeg') }}" alt="Image 4" class="gallery-img">
         <div class="gallery-caption">
-            <span class="caption-text">Auction starting in: </span>
+            <span class="caption-text">Auction starting in:2024-08-20 </span>
             <span class="timer" id="timer4"></span>
         </div>
     </div>

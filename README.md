@@ -6,7 +6,7 @@ Agri Market is a web-based solution designed to address the marketing and sales 
 
 - **Chatbox:** Users can ask any queries and receive real-time assistance.
 - **About Page:** Detailed description of our mission and vision.
-- **Auction Site:** Uses AI to verify the health and ownership of livestock for auction by analyzing health record cards and proof of ownership through URL links for pictures.
+- **Auction Site:** Uses AI to verify the health and ownership of livestock for auction by analyzing health record cards and proof of ownership through URL links(https://storage.googleapis.com/website_picture/sick_calf_record.png) for pictures.
 - **Shop Page:** Allows farmers to sell livestock, with the same verification process as the auction site to ensure eligibility and prevent fraud.
 - **Contact Page:** Users can leave a message for the team if they would like to be contacted.
 
